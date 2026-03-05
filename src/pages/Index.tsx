@@ -76,7 +76,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl font-black tracking-tight sm:text-7xl lg:text-8xl xl:text-9xl leading-[0.85] uppercase flex flex-col items-center justify-center"
+            className="text-4xl font-black tracking-tight sm:text-7xl lg:text-8xl xl:text-9xl leading-[0.85] uppercase flex flex-col items-center justify-center"
           >
             <div className="flex flex-wrap justify-center gap-x-[0.3em] whitespace-normal sm:whitespace-nowrap">
               <span>Engineer</span> <span className="text-primary italic">Flow.</span>
@@ -92,8 +92,7 @@ const Index = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mx-auto mt-12 max-w-3xl text-xl text-muted-foreground sm:text-2xl font-medium leading-relaxed"
           >
-            <span className="block mb-2">We replace manual bottlenecks with engineered leverage.</span>
-            <span className="block">Turning chaotic operations into consistent revenue.</span>
+            We replace manual bottlenecks with engineered leverage. Turning chaotic operations into consistent revenue.
           </motion.p>
 
           <motion.div
@@ -105,10 +104,10 @@ const Index = () => {
             <Button
               onClick={scrollToForm}
               size="lg"
-              className="h-24 rounded-full bg-primary px-16 text-xl font-black uppercase tracking-widest transition-all hover:scale-105 hover:shadow-[0_0_50px_rgba(16,185,129,0.4)] shadow-xl"
+              className="h-20 sm:h-24 rounded-full bg-primary px-10 sm:px-16 text-lg sm:text-xl font-black uppercase tracking-widest transition-all hover:scale-105 hover:shadow-[0_0_50px_rgba(16,185,129,0.4)] shadow-xl"
             >
               Request Consultation
-              <ChevronRight className="ml-2 h-8 w-8" />
+              <ChevronRight className="ml-2 h-6 w-6 sm:h-8 sm:w-8" />
             </Button>
           </motion.div>
         </div>
@@ -126,7 +125,7 @@ const Index = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-[360px]">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:auto-rows-[360px]">
             {/* Built For Bento */}
             <GlassCard className="md:col-span-8 flex flex-col justify-between group overflow-hidden border-primary/10">
               <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity">
@@ -460,7 +459,7 @@ const Index = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full h-24 rounded-[1.5rem] bg-primary text-2xl font-black uppercase tracking-[0.3em] transition-all hover:shadow-[0_0_60px_rgba(16,185,129,0.5)] shadow-xl active:scale-95"
+                  className="w-full h-20 sm:h-24 rounded-[1.5rem] bg-primary text-lg sm:text-2xl font-black uppercase tracking-[0.1em] sm:tracking-[0.3em] transition-all hover:shadow-[0_0_60px_rgba(16,185,129,0.5)] shadow-xl active:scale-95 px-4"
                 >
                   Confirm Application
                 </Button>

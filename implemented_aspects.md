@@ -4,13 +4,13 @@ This file tracks the evolution of the Carrillo Dynamics website, detailing what 
 
 ---
 
-## [2026-03-05] - Section Refinement & Layout (Iteration 5)
-- **Action**: Polished Hero title spacing/scaling and organized Process into a dedicated section.
-- **Why**: To improve visual hierarchy on large displays, fix responsive line breaks in the headline, and clarify the service delivery process.
+## [2026-03-05] - Mobile Responsiveness & Layout Fixes (Iteration 6)
+- **Action**: Corrected major mobile overflow issues and restored subtext styling.
+- **Why**: To ensure the high-converting aesthetic remains functional on all screen sizes, specifically addressing text bleed and hidden content on narrow displays.
 - **Key Changes**:
-  - Increased **Hero top spacing** to pt-40 to clear the Navbar.
-  - Scaled **Hero Headline** font size down for better desktop balance while ensuring it wraps to 4 lines on mobile.
-  - Refined **Excluded criteria** to be more concise (removed "without strategic intent").
-  - Extracted workflow cards into a dedicated **"Our Process"** section with a clear heading.
-  - Separated **Hero subtext** sentences onto distinct lines for better punchiness.
-- **Project Status**: Final visual balance and narrative flow achieved.
+  - Reverted **Hero Subtext** to a single line for simplified visual rhythm.
+  - Optimized **Mobile Headline** (text-4xl) to ensure "Eliminate Friction" wraps clearly on small screens.
+  - Adjusted **Button Sizing** (Hero & Form) for mobile to prevent width overruns and padding crowding.
+  - Fixed **Bento Clipping**: Changed row logic to auto-expand on mobile, ensuring all "Engineered For" bullet points are visible.
+  - Adjusted **Form Tracking**: Reduced text tracking for the final CTA to keep it contained within the button on narrow views.
+- **Project Status**: Full cross-device layout integrity confirmed.
