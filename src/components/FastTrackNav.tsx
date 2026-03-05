@@ -30,10 +30,7 @@ const FastTrackNav = ({ onContactClick, onVisibilityChange }: FastTrackNavProps)
         return () => window.removeEventListener("scroll", handleScroll);
     }, [isVisible, onVisibilityChange]);
 
-    const navLinks = [
-        { label: "Systems", target: "qualification" },
-        { label: "Success", target: "success" },
-    ];
+
 
     const scrollToSection = (id: string) => {
         const el = document.getElementById(id);
@@ -48,53 +45,60 @@ const FastTrackNav = ({ onContactClick, onVisibilityChange }: FastTrackNavProps)
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -100, opacity: 0 }}
                     transition={{ duration: 0.4, ease: "circOut" }}
-                    className="fixed top-0 left-0 right-0 z-[100] px-6 py-4"
+                    className="fixed top-0 left-0 right-0 z-[100] px-4 py-4 pointer-events-none"
                 >
-                    <div className="mx-auto max-w-7xl">
-                        <div className="glass-morphism rounded-full px-6 py-3 border border-white/10 flex items-center justify-between shadow-2xl backdrop-blur-2xl bg-black/60">
-                            <button
-                                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                                className="flex items-center gap-4 group"
-                            >
-                                <div className="bg-primary/20 p-2 rounded-full hidden sm:block group-hover:bg-primary/30 transition-colors">
-                                    <Zap className="h-5 w-5 text-primary" />
-                                </div>
-                                <div className="flex flex-col items-start">
-                                    <span className="text-[10px] font-black uppercase tracking-widest text-primary leading-none">Carrillo</span>
-                                    <span className="text-sm font-bold uppercase tracking-tight text-foreground">Dynamics</span>
-                                </div>
-                            </button>
+                    <div className="mx-auto max-w-7xl pointer-events-auto">
+                        <div className="glass-morphism rounded-full px-6 lg:px-12 py-3 border border-white/10 flex items-center shadow-2xl backdrop-blur-2xl bg-black/80 relative overflow-hidden">
+                            {/* Progress Indicator integrated into the bottom of the pill */}
+                            <motion.div
+                                className="absolute bottom-0 left-0 h-[2px] bg-primary origin-left"
+                                style={{ scaleX, width: '100%' }}
+                            />
 
-                            <div className="hidden md:flex items-center gap-8">
-                                {navLinks.map((link) => (
-                                    <button
-                                        key={link.target}
-                                        onClick={() => scrollToSection(link.target)}
-                                        className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40 hover:text-primary transition-colors"
-                                    >
-                                        {link.label}
-                                    </button>
-                                ))}
-                            </div>
-
-                            <div className="flex items-center gap-6">
-                                <Button
-                                    onClick={onContactClick}
-                                    size="sm"
-                                    className="rounded-full bg-primary hover:bg-primary/90 text-[10px] font-black uppercase tracking-widest px-6 h-10 shadow-lg"
+                            <div className="grid grid-cols-2 lg:grid-cols-4 w-full items-center gap-4">
+                                <button
+                                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                                    className="flex items-center gap-3 group justify-self-start"
                                 >
-                                    Contact Us
-                                    <ChevronRight className="ml-1 h-3 w-3" />
-                                </Button>
+                                    <div className="bg-primary/20 p-2 rounded-full hidden sm:flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+                                        <Zap className="h-4 w-4 text-primary" />
+                                    </div>
+                                    <div className="flex flex-col items-start min-w-0">
+                                        <span className="text-[9px] font-black uppercase tracking-widest text-primary leading-none">Carrillo</span>
+                                        <span className="text-xs font-bold uppercase tracking-tight text-foreground truncate">Dynamics</span>
+                                    </div>
+                                </button>
+
+                                <div className="hidden lg:flex justify-center">
+                                    <button
+                                        onClick={() => scrollToSection('calculator')}
+                                        className="text-[10px] font-black uppercase tracking-[0.2em] text-white hover:text-primary transition-colors whitespace-nowrap"
+                                    >
+                                        Time Saving Calculator
+                                    </button>
+                                </div>
+
+                                <div className="hidden lg:flex justify-center">
+                                    <button
+                                        onClick={() => scrollToSection('comparison')}
+                                        className="text-[10px] font-black uppercase tracking-[0.2em] text-white hover:text-primary transition-colors whitespace-nowrap"
+                                    >
+                                        Before & After Engineering
+                                    </button>
+                                </div>
+
+                                <div className="justify-self-end">
+                                    <Button
+                                        onClick={onContactClick}
+                                        size="sm"
+                                        className="h-10 rounded-full px-6 text-[10px] font-black uppercase tracking-widest bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg transition-all"
+                                    >
+                                        Contact Us
+                                    </Button>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    {/* Progress Indicator */}
-                    <motion.div
-                        className="absolute top-0 left-0 right-0 h-1 bg-primary origin-left"
-                        style={{ scaleX }}
-                    />
                 </motion.div>
             )}
         </AnimatePresence>

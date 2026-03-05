@@ -68,16 +68,6 @@ const InteractiveCalculator = () => {
             </GlassCard>
 
             <div className="flex flex-col justify-center space-y-8">
-                <div className="space-y-2">
-                    <h3 className="text-4xl sm:text-6xl font-black uppercase tracking-tighter leading-none">
-                        Potential <br />
-                        <span className="text-primary italic">Reclaimed Time.</span>
-                    </h3>
-                    <p className="text-xl text-muted-foreground font-medium">
-                        Personalized ROI projection for your current operational structure.
-                    </p>
-                </div>
-
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="p-8 rounded-[2rem] bg-white/5 border border-white/10 flex flex-col justify-center">
                         <p className="text-sm font-black uppercase tracking-widest text-muted-foreground mb-2">Annual Reclaimed</p>

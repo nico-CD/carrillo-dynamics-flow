@@ -29,15 +29,13 @@ const Navbar = () => {
                 <button onClick={() => scrollToSection('success')} className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground transition-colors hover:text-primary">Your Success</button>
             </div>
 
-            <div className="md:hidden">
-                <Button
-                    onClick={() => scrollToSection('consultation')}
-                    size="sm"
-                    className="h-10 rounded-full px-6 text-[10px] font-black uppercase tracking-[0.2em]"
-                >
-                    Contact Us
-                </Button>
-            </div>
+            <Button
+                onClick={() => scrollToSection('consultation')}
+                size="sm"
+                className="h-10 rounded-full px-8 text-[11px] font-black uppercase tracking-[0.2em] bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all"
+            >
+                Contact Us
+            </Button>
         </motion.nav>
     );
 };

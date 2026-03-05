@@ -5,7 +5,7 @@ import * as z from "zod";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search, Layers, Rocket, Check, X, Shield, Cog, ArrowDown, Activity, ExternalLink,
-  ChevronRight, Gem, Truck, HeartPulse, Boxes, BarChart3, Quote,
+  ChevronRight, Gem, Truck, HeartPulse, Boxes, BarChart3, Quote
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -91,7 +91,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-3xl font-black tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl leading-[0.85] uppercase flex flex-col items-center justify-center"
+            className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[0.85] uppercase flex flex-col items-center justify-center pt-10 sm:pt-0"
           >
             <div className="flex flex-wrap justify-center gap-x-[0.3em] whitespace-normal sm:whitespace-nowrap">
               <span>Engineer</span> <span className="text-primary italic">Flow.</span>
@@ -107,9 +107,9 @@ const Index = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mx-auto mt-12 max-w-3xl text-xl text-muted-foreground sm:text-2xl font-medium leading-relaxed"
           >
-            <p className="mb-6 flex flex-wrap justify-center items-center gap-x-2">
+            <p className="mb-6 flex flex-wrap justify-center items-center gap-x-2 min-h-[5.5rem] sm:min-h-[2.5rem]">
               <span>Your team is spending hours on</span>
-              <span className="relative inline-flex items-center justify-center min-w-[6ch] sm:min-w-[12ch] h-8 sm:h-10 text-primary font-bold italic">
+              <span className="relative inline-flex items-center justify-center min-w-[12ch] h-10 text-primary font-bold italic">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={cyclingWords[wordIndex]}
@@ -117,7 +117,7 @@ const Index = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.3 }}
-                    className="absolute"
+                    className="absolute text-center w-full"
                   >
                     {cyclingWords[wordIndex]}
                   </motion.span>
@@ -178,8 +178,16 @@ const Index = () => {
       </section>
 
       {/* ===== AUTOMATION CALCULATOR ===== */}
-      <section className="px-6 py-40 border-b border-white/5">
+      <section id="calculator" className="px-6 py-40 border-b border-white/5 bg-black/40">
         <div className="mx-auto max-w-7xl">
+          <div className="mb-20 text-center">
+            <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tight mb-4">
+              Reclaim <span className="text-primary italic">Your Time.</span>
+            </h2>
+            <p className="text-lg sm:text-xl text-muted-foreground font-medium max-w-2xl mx-auto">
+              Personalized ROI projection for your current operational structure.
+            </p>
+          </div>
           <InteractiveCalculator />
         </div>
       </section>
@@ -247,7 +255,7 @@ const Index = () => {
       </section>
 
       {/* ===== COMPARISON SLIDER ===== */}
-      <section className="px-6 py-40 border-t border-white/5 bg-black/40">
+      <section id="comparison" className="px-6 py-40 border-t border-white/5 bg-black/40">
         <div className="mx-auto max-w-7xl">
           <ComparisonSlider />
         </div>
@@ -272,7 +280,7 @@ const Index = () => {
             {[
               {
                 stat: "80%",
-                label: "Time Reducation",
+                label: "Time Reduction",
                 win: "Reduced invoice processing delay for a mid-sized logistics carrier via automated OCR pipeline.",
               },
               {
@@ -376,7 +384,7 @@ const Index = () => {
       <section className="px-6 py-40 bg-white/[0.01] border-y border-white/5 shadow-inner">
         <div className="mx-auto max-w-4xl text-center">
           <p className="text-2xl leading-relaxed text-foreground/80 font-medium">
-            Carrillo Dynamics is built on a foundation of formal engineering and corporate operations management. This isn't basic software scripting, it's rigorous, structural systems thinking applied to digital infrastructure. Every engagement is architected with the precision and accountability of an engineering discipline.
+            Carrillo Dynamics is built on a foundation of formal engineering and corporate operations management. This isn't basic software scripting, it's rigorous systems thinking applied to digital infrastructure. Every engagement is engineered with precision, discipline, and accountability.
           </p>
         </div>
       </section>
@@ -389,19 +397,12 @@ const Index = () => {
             <div className="space-y-8 relative z-10">
               <h3 className="text-sm font-black uppercase tracking-[0.4em] text-primary italic">Statement of Intent.</h3>
               <p className="text-2xl sm:text-3xl font-bold leading-relaxed text-foreground">
-                "I started Carrillo Dynamics because I saw too many talented teams drowning in 'manual debt', the kind that moves spreadsheets instead of needles.<br /><br />We don't just sell software; we build the structural leverage your business actually needs to breathe. My goal is simple: to turn your operational chaos into a deterministic engine that wins by design."
+                "I started Carrillo Dynamics because I saw too many talented teams drowning in 'manual debt', the kind that moves spreadsheets instead of needles.<br /><br />We don't just sell software; we build the structural leverage your business actually needs to breathe.<br /><br />My goal is simple: to turn your operational chaos into a deterministic engine that wins by design."
               </p>
               <div className="pt-12 flex flex-col sm:flex-row sm:items-center justify-between gap-8 border-t border-white/5">
                 <div>
                   <p className="text-xl font-black uppercase tracking-tight">Nicolas Carrillo</p>
                   <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest italic">Founding Engineer, Carrillo Dynamics</p>
-                </div>
-                <div className="h-16 w-48 opacity-50 grayscale contrast-125">
-                  {/* Placeholder for SVG Signature effect */}
-                  <svg viewBox="0 0 200 60" className="h-full w-full fill-none stroke-primary stroke-[1.5] leading-none">
-                    <path d="M10,40 Q30,10 50,40 T90,40 T130,40 T170,40" className="opacity-40" />
-                    <text x="10" y="45" className="font-serif italic text-3xl fill-primary stroke-none">N. Carrillo</text>
-                  </svg>
                 </div>
               </div>
             </div>
