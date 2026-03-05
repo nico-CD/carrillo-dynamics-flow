@@ -396,8 +396,8 @@ const Index = () => {
             <Quote className="absolute top-10 left-10 h-20 w-20 text-primary/5 -z-10" />
             <div className="space-y-8 relative z-10">
               <h3 className="text-sm font-black uppercase tracking-[0.4em] text-primary italic">Statement of Intent.</h3>
-              <p className="text-2xl sm:text-3xl font-bold leading-relaxed text-foreground">
-                "I started Carrillo Dynamics because I saw too many talented teams drowning in 'manual debt', the kind that moves spreadsheets instead of needles.<br /><br />We don't just sell software; we build the structural leverage your business actually needs to breathe.<br /><br />My goal is simple: to turn your operational chaos into a deterministic engine that wins by design."
+              <p className="text-xl sm:text-3xl font-bold leading-relaxed text-foreground">
+                "I started Carrillo Dynamics because I saw too many talented teams drowning in 'manual' work, the kind that moves spreadsheets instead of adding zeros.<br /><br />My goal is to turn your operational chaos into a deterministic engine that wins on repeat by design."
               </p>
               <div className="pt-12 flex flex-col sm:flex-row sm:items-center justify-between gap-8 border-t border-white/5">
                 <div>
@@ -466,7 +466,7 @@ const Index = () => {
                 <div className="space-y-10">
                   <div className="flex items-center gap-6">
                     <span className="text-xs font-black uppercase tracking-[0.3em] text-primary bg-primary/20 border border-primary/30 px-5 py-2 rounded-2xl">Part 02</span>
-                    <h3 className="text-sm font-black uppercase tracking-[0.3em] text-foreground">Company Intelligence</h3>
+                    <h3 className="text-sm font-black uppercase tracking-[0.3em] text-foreground">Company Information</h3>
                     <div className="flex-1 h-px bg-white/10" />
                   </div>
 

@@ -61,7 +61,7 @@ const FastTrackNav = ({ onContactClick, onVisibilityChange }: FastTrackNavProps)
                                     className="flex items-center gap-3 group justify-self-start"
                                 >
                                     <div className="bg-primary/20 p-2 rounded-full hidden sm:flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                                        <Zap className="h-4 w-4 text-primary" />
+                                        <img src="/favicon.ico" alt="Carrillo Dynamics Icon" className="h-4 w-4" />
                                     </div>
                                     <div className="flex flex-col items-start min-w-0">
                                         <span className="text-[9px] font-black uppercase tracking-widest text-primary leading-none">Carrillo</span>
