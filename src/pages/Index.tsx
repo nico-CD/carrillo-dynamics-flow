@@ -1,11 +1,11 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Search, Layers, Rocket, Check, X, Shield, Cog, ArrowDown, Activity, ExternalLink,
-  ChevronRight,
+  ChevronRight, Gem, Truck, HeartPulse, Boxes, BarChart3, Quote,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,6 +19,9 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import GlassCard from "@/components/GlassCard";
+import InteractiveCalculator from "@/components/InteractiveCalculator";
+import FastTrackNav from "@/components/FastTrackNav";
+import ComparisonSlider from "@/components/ComparisonSlider";
 import { cn } from "@/lib/utils";
 
 // --- Form schema --- (Preserved exactly)
@@ -65,9 +68,21 @@ const Index = () => {
     form.reset();
   };
 
+  const cyclingWords = ["Sheet Sprawl", "Manual Syncing", "Invoice Chasing", "Email Purgatory", "CRM Bloat", "Lead Leakage"];
+  const [wordIndex, setWordIndex] = useState(0);
+  const [isNavbarHidden, setIsNavbarHidden] = useState(false);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % cyclingWords.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="mesh-gradient min-h-screen text-foreground selection:bg-primary/30 font-sans">
-      <Navbar />
+      <FastTrackNav onContactClick={scrollToForm} onVisibilityChange={setIsNavbarHidden} />
+      {!isNavbarHidden && <Navbar />}
 
       {/* ===== HERO ===== */}
       <section className="relative flex min-h-screen flex-col items-center justify-center px-6 pt-40 text-center overflow-hidden pb-40">
@@ -76,7 +91,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl font-black tracking-tight sm:text-7xl lg:text-8xl xl:text-9xl leading-[0.85] uppercase flex flex-col items-center justify-center"
+            className="text-3xl font-black tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl leading-[0.85] uppercase flex flex-col items-center justify-center"
           >
             <div className="flex flex-wrap justify-center gap-x-[0.3em] whitespace-normal sm:whitespace-nowrap">
               <span>Engineer</span> <span className="text-primary italic">Flow.</span>
@@ -86,14 +101,34 @@ const Index = () => {
             </div>
           </motion.h1>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mx-auto mt-12 max-w-3xl text-xl text-muted-foreground sm:text-2xl font-medium leading-relaxed"
           >
-            We replace manual bottlenecks with engineered leverage. Turning chaotic operations into consistent revenue.
-          </motion.p>
+            <p className="mb-6 flex flex-wrap justify-center items-center gap-x-2">
+              <span>Your team is spending hours on</span>
+              <span className="relative inline-flex items-center justify-center min-w-[6ch] sm:min-w-[12ch] h-8 sm:h-10 text-primary font-bold italic">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={cyclingWords[wordIndex]}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute"
+                  >
+                    {cyclingWords[wordIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+              <span>that shouldn't require a human.</span>
+            </p>
+            <p>
+              We replace business bottlenecks with engineered leverage.
+            </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -104,16 +139,49 @@ const Index = () => {
             <Button
               onClick={scrollToForm}
               size="lg"
-              className="h-20 sm:h-24 rounded-full bg-primary px-10 sm:px-16 text-lg sm:text-xl font-black uppercase tracking-widest transition-all hover:scale-105 hover:shadow-[0_0_50px_rgba(16,185,129,0.4)] shadow-xl"
+              className="h-16 sm:h-20 rounded-full bg-primary px-8 sm:px-12 text-base sm:text-lg font-black uppercase tracking-widest transition-all hover:scale-105 hover:shadow-[0_0_50px_rgba(16,185,129,0.4)] shadow-xl"
             >
               Request Consultation
-              <ChevronRight className="ml-2 h-6 w-6 sm:h-8 sm:w-8" />
+              <ChevronRight className="ml-2 h-5 w-5 sm:h-6 sm:w-6" />
             </Button>
           </motion.div>
         </div>
 
         {/* Subtle decorative grid */}
         <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+      </section>
+
+      {/* ===== SECTOR TRUST ===== */}
+      <section className="py-24 border-y border-white/5 bg-black/40">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
+            <div className="max-w-2xl text-center lg:text-left">
+              <p className="text-3xl sm:text-4xl font-black leading-tight tracking-tight uppercase">
+                Partnered with firms across <span className="text-primary italic">high-stakes sectors</span> to eliminate operational debt.
+              </p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-12 sm:gap-20 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
+              {[
+                { icon: Gem, label: "Finance" },
+                { icon: Truck, label: "Logistics" },
+                { icon: HeartPulse, label: "Healthcare" },
+                { icon: Boxes, label: "Energy" },
+              ].map((sector) => (
+                <div key={sector.label} className="flex flex-col items-center gap-4 group">
+                  <sector.icon className="h-14 w-14 sm:h-16 sm:w-16 group-hover:text-primary transition-colors duration-500" />
+                  <span className="text-xs font-black uppercase tracking-[0.2em]">{sector.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== AUTOMATION CALCULATOR ===== */}
+      <section className="px-6 py-40 border-b border-white/5">
+        <div className="mx-auto max-w-7xl">
+          <InteractiveCalculator />
+        </div>
       </section>
 
       {/* ===== QUALIFICATION BENTO ===== */}
@@ -178,6 +246,60 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ===== COMPARISON SLIDER ===== */}
+      <section className="px-6 py-40 border-t border-white/5 bg-black/40">
+        <div className="mx-auto max-w-7xl">
+          <ComparisonSlider />
+        </div>
+      </section>
+
+      {/* ===== SNAPSHOTS OF SUCCESS ===== */}
+      <section id="success" className="px-6 py-40 bg-black/20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div className="max-w-2xl">
+              <h2 className="text-5xl font-black tracking-tight sm:text-8xl uppercase mb-6">
+                Snapshots of <span className="text-primary italic">Success.</span>
+              </h2>
+              <p className="text-xl text-muted-foreground font-medium">Real-world impact across diverse operational ecosystems.</p>
+            </div>
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 italic text-sm text-primary font-bold">
+              Engineering Wins.
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                stat: "80%",
+                label: "Time Reducation",
+                win: "Reduced invoice processing delay for a mid-sized logistics carrier via automated OCR pipeline.",
+              },
+              {
+                stat: "4.5x",
+                label: "Capacity Growth",
+                win: "Automated CRM lead routing allowing a sales team to handle 4.5x volume without new hires.",
+              },
+              {
+                stat: "0",
+                label: "Manual Errors",
+                win: "Eliminated reporting discrepancies for a healthcare provider through deterministic data sync.",
+              },
+            ].map((s, idx) => (
+              <GlassCard key={idx} delay={idx * 0.1} className="flex flex-col gap-8 group">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-6xl font-black text-primary tracking-tighter">{s.stat}</span>
+                  <span className="text-xs font-black uppercase tracking-widest text-muted-foreground">{s.label}</span>
+                </div>
+                <p className="text-lg font-medium text-foreground/80 leading-relaxed border-l-2 border-primary/20 pl-6 group-hover:border-primary transition-colors">
+                  "{s.win}"
+                </p>
+              </GlassCard>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== OUR PROCESS ===== */}
       <section id="process" className="px-6 py-40 border-t border-white/5">
         <div className="mx-auto max-w-7xl">
@@ -187,7 +309,31 @@ const Index = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Live System Schematic (Animated Lines) */}
+            <div className="absolute top-[60px] left-[15%] right-[15%] h-px hidden md:block z-0 pointer-events-none">
+              <svg className="w-full h-[300px] overflow-visible">
+                <motion.path
+                  d="M 0 0 C 100 0, 100 200, 200 200 C 300 200, 300 0, 400 0"
+                  fill="none"
+                  stroke="url(#gradient-line)"
+                  strokeWidth="2"
+                  strokeDasharray="10 10"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  viewport={{ once: false, amount: 0.1 }}
+                  transition={{ duration: 2, ease: "easeInOut" }}
+                />
+                <defs>
+                  <linearGradient id="gradient-line" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="rgba(16,185,129,0)" />
+                    <stop offset="50%" stopColor="rgba(16,185,129,0.5)" />
+                    <stop offset="100%" stopColor="rgba(16,185,129,0)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+
             {/* Process Cards */}
             {[
               {
@@ -229,19 +375,37 @@ const Index = () => {
       {/* ===== CREDIBILITY ===== */}
       <section className="px-6 py-40 bg-white/[0.01] border-y border-white/5 shadow-inner">
         <div className="mx-auto max-w-4xl text-center">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="inline-block p-6 rounded-[2.5rem] bg-white/5 mb-14 border border-white/10"
-          >
-            <Cog className="h-14 w-14 text-primary animate-[spin_10s_linear_infinite]" />
-          </motion.div>
-          <h2 className="text-5xl font-black tracking-tight sm:text-7xl lg:text-8xl uppercase mb-12 leading-tight">
-            Engineering-Grade <br /><span className="text-primary italic">Foundation.</span>
-          </h2>
           <p className="text-2xl leading-relaxed text-foreground/80 font-medium">
             Carrillo Dynamics is built on a foundation of formal engineering and corporate operations management. This isn't basic software scripting, it's rigorous, structural systems thinking applied to digital infrastructure. Every engagement is architected with the precision and accountability of an engineering discipline.
           </p>
+        </div>
+      </section>
+
+      {/* ===== FOUNDER'S STATEMENT ===== */}
+      <section className="px-6 py-40 border-b border-white/5">
+        <div className="mx-auto max-w-4xl">
+          <GlassCard className="p-12 sm:p-20 relative overflow-hidden border-primary/20 bg-primary/[0.02]">
+            <Quote className="absolute top-10 left-10 h-20 w-20 text-primary/5 -z-10" />
+            <div className="space-y-8 relative z-10">
+              <h3 className="text-sm font-black uppercase tracking-[0.4em] text-primary italic">Statement of Intent.</h3>
+              <p className="text-2xl sm:text-3xl font-bold leading-relaxed text-foreground">
+                "I started Carrillo Dynamics because I saw too many talented teams drowning in 'manual debt', the kind that moves spreadsheets instead of needles.<br /><br />We don't just sell software; we build the structural leverage your business actually needs to breathe. My goal is simple: to turn your operational chaos into a deterministic engine that wins by design."
+              </p>
+              <div className="pt-12 flex flex-col sm:flex-row sm:items-center justify-between gap-8 border-t border-white/5">
+                <div>
+                  <p className="text-xl font-black uppercase tracking-tight">Nicolas Carrillo</p>
+                  <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest italic">Founding Engineer, Carrillo Dynamics</p>
+                </div>
+                <div className="h-16 w-48 opacity-50 grayscale contrast-125">
+                  {/* Placeholder for SVG Signature effect */}
+                  <svg viewBox="0 0 200 60" className="h-full w-full fill-none stroke-primary stroke-[1.5] leading-none">
+                    <path d="M10,40 Q30,10 50,40 T90,40 T130,40 T170,40" className="opacity-40" />
+                    <text x="10" y="45" className="font-serif italic text-3xl fill-primary stroke-none">N. Carrillo</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </GlassCard>
         </div>
       </section>
 
@@ -465,6 +629,43 @@ const Index = () => {
                 </Button>
               </form>
             </Form>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== THE AUTOMATION INDEX ===== */}
+      <section className="px-6 py-40 border-t border-white/5 bg-white/[0.01]">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-20">
+            <div className="max-w-2xl">
+              <h2 className="text-4xl font-black uppercase tracking-tight mb-4">The Automation <span className="text-primary italic">Index.</span></h2>
+              <p className="text-xl text-muted-foreground font-medium italic">Thought leadership on structural operational integrity.</p>
+            </div>
+            <div className="text-xs font-black uppercase tracking-[0.3em] text-foreground/40 hidden md:block">Volume 01 / 2026</div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Operational Debt: The Hidden Growth Killer",
+                excerpt: "Why manual-first workflows are the primary bottleneck for scaling B2B service firms.",
+                tag: "Strategy",
+              },
+              {
+                title: "Deterministic vs. Probabilistic Systems",
+                excerpt: "The engineering case for rigid, rule-based automation over black-box AI logic.",
+                tag: "Engineering",
+              },
+            ].map((post, idx) => (
+              <GlassCard key={idx} delay={idx * 0.1} className="p-10 group cursor-pointer hover:bg-white/5">
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-6 block italic">{post.tag}</span>
+                <h4 className="text-2xl font-black uppercase mb-4 tracking-tight group-hover:text-primary transition-colors">{post.title}</h4>
+                <p className="text-muted-foreground font-medium mb-8 leading-relaxed">{post.excerpt}</p>
+                <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0">
+                  Read Analysis <ExternalLink className="h-4 w-4" />
+                </div>
+              </GlassCard>
+            ))}
           </div>
         </div>
       </section>

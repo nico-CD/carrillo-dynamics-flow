@@ -25,17 +25,19 @@ const Navbar = () => {
             </div>
 
             <div className="hidden items-center gap-10 md:flex">
-                <button onClick={() => scrollToSection('qualification')} className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground transition-colors hover:text-primary">Operational Clarity</button>
-                <button onClick={() => scrollToSection('consultation')} className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground transition-colors hover:text-primary">Contact Us</button>
+                <button onClick={() => scrollToSection('process')} className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground transition-colors hover:text-primary">Our Process</button>
+                <button onClick={() => scrollToSection('success')} className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground transition-colors hover:text-primary">Your Success</button>
             </div>
 
-            <Button
-                onClick={() => scrollToSection('consultation')}
-                size="sm"
-                className="h-10 rounded-full px-6 text-[10px] font-black uppercase tracking-[0.2em]"
-            >
-                Contact Us
-            </Button>
+            <div className="md:hidden">
+                <Button
+                    onClick={() => scrollToSection('consultation')}
+                    size="sm"
+                    className="h-10 rounded-full px-6 text-[10px] font-black uppercase tracking-[0.2em]"
+                >
+                    Contact Us
+                </Button>
+            </div>
         </motion.nav>
     );
 };
