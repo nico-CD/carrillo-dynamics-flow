@@ -4,6 +4,25 @@ This file tracks the evolution of the Carrillo Dynamics website, detailing what 
 
 ---
 
+## [2026-03-05] - Final Visual Polishes (Iteration 15)
+- **Action**: Removed scrollbars, simplified Fast-Track Nav, and built a custom form success modal interaction.
+- **Why**: Requested by the user to achieve maximum minimalist aesthetic and high-quality post-conversion UX.
+- **Key Changes**:
+  - Hid global scrollbars via `index.css` (`::-webkit-scrollbar { display: none; }` and `scrollbar-width: none;`) to keep edges completely clean.
+  - Stripped "Carrillo Dynamics" text out of the Fast-Track shortcut, leaving only the minimalist floating Favicon to act as a back-to-top button.
+  - Re-engineered the Intake Form using `AnimatePresence`. Upon submission, rather than just showing a toast, the entire form `<motion.div>` animates out and a sleek "Application Received" state animates in, creating a seamless, modal-like success experience without actually opening a separate pop-up.
+  - Corrected viewport displacement: Upon shrinking the form to the modal state, the browser would naturally drop down to the Automation Index. A smooth `scrollIntoView` command now forces the viewport to stay centered on the success modal.
+
+## [2026-03-05] - Minor Cleanups (Iteration 14)
+- **Action**: Fixed toast notifications, adjusted calculator text, and refined favicon display.
+- **Why**: User feedback on overlaps and minor visual bugs during testing.
+- **Key Changes**:
+  - Re-positioned the Shadcn `Toaster` to `bottom-center` with increased padding and higher z-index (`z-[150]`) so the "Form submitted" messages don't hide behind navigation.
+  - Increased the text size of the toast title and description for better legibility on desktop.
+  - Removed the circular white border/background from the favicon in the Fast-Track Navigation for a cleaner look. 
+  - Truncated "Manual Hours / Week / Person" to "Hrs / Week / Person" in the calculator.
+- **Project Status**: Minor layout bugs patched successfully.
+
 ## [2026-03-05] - Final Aesthetic Polish (Iteration 13)
 - **Action**: Small but impactful visual tweaks across the navbar, founder statement, and intake system.
 - **Why**: To address lingering alignment, branding, and text flow constraints.

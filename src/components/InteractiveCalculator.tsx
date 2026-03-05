@@ -45,7 +45,7 @@ const InteractiveCalculator = () => {
                     <div className="space-y-4">
                         <div className="flex justify-between text-sm font-bold uppercase tracking-widest text-muted-foreground">
                             <label className="flex items-center gap-2 italic">
-                                <Clock className="h-4 w-4" /> Manual Hours / Week / Person
+                                <Clock className="h-4 w-4" /> Hrs / Week / Person
                             </label>
                             <span className="text-primary">{hoursPerWeek} Hours</span>
                         </div>

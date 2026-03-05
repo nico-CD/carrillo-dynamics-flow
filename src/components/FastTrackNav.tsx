@@ -58,14 +58,10 @@ const FastTrackNav = ({ onContactClick, onVisibilityChange }: FastTrackNavProps)
                             <div className="grid grid-cols-2 lg:grid-cols-4 w-full items-center gap-4">
                                 <button
                                     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                                    className="flex items-center gap-3 group justify-self-start"
+                                    className="flex items-center group justify-self-start"
                                 >
-                                    <div className="bg-primary/20 p-2 rounded-full hidden sm:flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                                        <img src="/favicon.ico" alt="Carrillo Dynamics Icon" className="h-4 w-4" />
-                                    </div>
-                                    <div className="flex flex-col items-start min-w-0">
-                                        <span className="text-[9px] font-black uppercase tracking-widest text-primary leading-none">Carrillo</span>
-                                        <span className="text-xs font-bold uppercase tracking-tight text-foreground truncate">Dynamics</span>
+                                    <div className="hidden sm:flex items-center justify-center transition-transform hover:scale-110">
+                                        <img src="/favicon.ico" alt="Carrillo Dynamics Icon" className="h-6 w-6" />
                                     </div>
                                 </button>
 
