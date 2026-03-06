@@ -55,7 +55,7 @@ const FastTrackNav = ({ onContactClick, onVisibilityChange }: FastTrackNavProps)
                                 style={{ scaleX, width: '100%' }}
                             />
 
-                            <div className="grid grid-cols-2 lg:grid-cols-4 w-full items-center gap-4">
+                            <div className="grid grid-cols-2 lg:grid-cols-3 w-full items-center gap-4">
                                 <button
                                     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                                     className="flex items-center group justify-self-start"
@@ -70,16 +70,7 @@ const FastTrackNav = ({ onContactClick, onVisibilityChange }: FastTrackNavProps)
                                         onClick={() => scrollToSection('calculator')}
                                         className="text-[10px] font-black uppercase tracking-[0.2em] text-white hover:text-primary transition-colors whitespace-nowrap"
                                     >
-                                        Time Saving Calculator
-                                    </button>
-                                </div>
-
-                                <div className="hidden lg:flex justify-center">
-                                    <button
-                                        onClick={() => scrollToSection('comparison')}
-                                        className="text-[10px] font-black uppercase tracking-[0.2em] text-white hover:text-primary transition-colors whitespace-nowrap"
-                                    >
-                                        Before & After Engineering
+                                        Reclaim Your Time
                                     </button>
                                 </div>
 

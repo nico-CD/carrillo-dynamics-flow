@@ -23,7 +23,7 @@ const ProcessBlueprint = () => {
 
                         {/* Animated path to center */}
                         <motion.div
-                            className="absolute top-1/2 -right-12 w-12 h-px bg-gradient-to-r from-red-500/50 to-transparent hidden md:block origin-left"
+                            className="absolute top-1/2 -right-16 md:-right-24 w-16 md:w-24 h-px bg-gradient-to-r from-red-500/50 to-transparent hidden md:block origin-left"
                             initial={{ scaleX: 0 }}
                             whileInView={{ scaleX: 1 }}
                             transition={{ duration: 1, repeat: Infinity, repeatType: "loop", ease: "linear" }}
@@ -37,11 +37,11 @@ const ProcessBlueprint = () => {
                 <motion.div
                     initial={{ scale: 0.9, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
-                    className="w-40 h-40 rounded-full border border-primary/30 bg-black/60 backdrop-blur-xl flex items-center justify-center relative shadow-[0_0_50px_rgba(16,185,129,0.15)]"
+                    className="w-56 h-56 rounded-full border border-primary/30 bg-black/60 backdrop-blur-xl flex items-center justify-center relative shadow-[0_0_80px_rgba(16,185,129,0.2)]"
                 >
-                    <div className="absolute inset-2 rounded-full border border-primary/20 animate-[spin_10s_linear_infinite]" />
-                    <div className="absolute inset-4 rounded-full border border-primary/10 animate-[spin_15s_linear_infinite_reverse]" />
-                    <Cpu className="w-12 h-12 text-primary" />
+                    <div className="absolute inset-4 rounded-full border border-primary/20 animate-[spin_10s_linear_infinite]" />
+                    <div className="absolute inset-8 rounded-full border border-primary/10 animate-[spin_15s_linear_infinite_reverse]" />
+                    <Cpu className="w-16 h-16 text-primary" />
                 </motion.div>
             </div>
 
@@ -60,7 +60,7 @@ const ProcessBlueprint = () => {
                     >
                         {/* Animated path from center */}
                         <motion.div
-                            className="absolute top-1/2 -left-12 w-12 h-px bg-gradient-to-r from-transparent to-primary/50 hidden md:block origin-right"
+                            className="absolute top-1/2 -left-16 md:-left-24 w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-primary/50 hidden md:block origin-right"
                             initial={{ scaleX: 0 }}
                             whileInView={{ scaleX: 1 }}
                             transition={{ duration: 1, repeat: Infinity, repeatType: "loop", ease: "linear", delay: 0.5 }}

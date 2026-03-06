@@ -4,6 +4,47 @@ This file tracks the evolution of the Carrillo Dynamics website, detailing what 
 
 ---
 
+## [2026-03-06] - Navigational & UI Fine-Tuning (Iteration 18.2)
+- **Action**: Simplified the fast-track bar, adjusted calculator spacing, and updated section headers.
+- **Why**: To streamline the user experience by focusing on primary CTAs and improving visual balance.
+- **Key Changes**:
+  - `FastTrackNav.tsx`: Removed the "Before & After Engineering" link. Renamed the calculator link to **"Reclaim Your Time"** and updated the layout to 3 columns for better centering.
+  - `InteractiveCalculator.tsx`: Reduced the top padding of the "Efficiency Input" container (`pt-5`/`md:pt-6`) to minimize whitespace between the container edge and title.
+  - `Index.tsx`: Renamed the "Statement of Intent" section to **"Founder's Statement"**.
+
+## [2026-03-06] - Website Flow Rearrangement (Iteration 18)
+- **Action**: Completely reordered the landing page flow and removed the engineered leverage diagram and engineering statement blocks.
+- **Why**: To optimize the narrative progression for clarity and remove redundant architectural diagrams.
+- **Key Changes**:
+  - `Index.tsx`: Sections now flow in the requested order:
+    1. Hero
+    2. Partnered (Sector Trust)
+    3. Operational Clarity (Qualification Bento)
+    4. Our Process
+    5. Reclaim Your Time (Calculator)
+    6. Snapshots of Success
+    7. Statement of Intent (Founder's Quote)
+    8. Contact Us
+    9. Operations FAQ
+    10. Footer
+  - **Removals**: Deleted the `CREDIBILITY` section (formal engineering text) and the `PROCESS BLUEPRINT` section.
+
+## [2026-03-05] - Scaling Elements and FAQ (Iteration 16.6)
+- **Action**: Enlarged specific layout elements and replaced thought leadership block with direct FAQ.
+- **Why**: The user requested that the efficiency container feel less cramped, the process architecture be more dominant, and potential objections be handled directly.
+- **Key Changes**:
+  - `InteractiveCalculator.tsx`: Increased the `Efficiency Input` container's internal padding, `space-y` utility gaps, slider tracks (`h-2` -> `h-3`), and label text sizes (`text-sm` -> `text-base` / `text-lg`) to fully occupy the left grid column.
+  - `ProcessBlueprint.tsx`: Scaled up the central 'Carrillo Engine' orbit from `w-40 h-40` to a dominating `w-56 h-56`. Connected the lateral animated input/output paths directly into the edge of the engine using `w-16`/`w-24` lines.
+  - `Index.tsx`: Deleted the entire `Automation Index` section (articles). Replaced it with an `Operations FAQ` group utilizing the Shadcn `Accordion` component to directly counteract objections like "Is this just another SaaS tool?" and questions about maintenance / documentation.
+
+## [2026-03-05] - Layout Adjustments (Iteration 16.5)
+- **Action**: Streamlined components based on user feedback.
+- **Why**: Prevented "virus warning" fatigue from the pre-loader, solved calculator cramping, and promoted the technical diagram over the abstract slider.
+- **Key Changes**:
+  - Unmounted and removed `TerminalPreloader.tsx` to ensure immediate site access.
+  - Injected `mt-6 pt-6 border-t border-white/5` spacing directly above the "Team Size" slider in `InteractiveCalculator.tsx` to relieve visual pressure beneath the section header.
+  - Entirely unmounted `ComparisonSlider.tsx` and physically swapped its position in `Index.tsx` with the newly engineered `ProcessBlueprint.tsx` diagram.
+
 ## [2026-03-05] - Advanced Interactive Features (Iteration 16)
 - **Action**: Implemented Terminal Preloader, Count-Up Mechanics, Spotlight Hover Effects, and Dynamic Process Blueprint.
 - **Why**: Requested by the user to push the website into a highly premium, deterministic "Systems Engineering" tier.

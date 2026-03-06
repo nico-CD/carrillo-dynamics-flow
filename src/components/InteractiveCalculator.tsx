@@ -18,19 +18,19 @@ const InteractiveCalculator = () => {
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <GlassCard className="p-10 space-y-10 border-white/10 bg-white/5 backdrop-blur-xl">
+            <GlassCard className="pt-5 px-8 pb-8 md:pt-6 md:px-10 md:pb-10 space-y-10 border-white/10 bg-white/5 backdrop-blur-xl flex flex-col justify-center">
                 <div className="flex items-center gap-4 text-primary">
                     <Calculator className="h-8 w-8" />
-                    <h3 className="text-2xl font-black uppercase tracking-tight">Efficiency Input</h3>
+                    <h3 className="text-3xl font-black uppercase tracking-tight">Efficiency Input</h3>
                 </div>
 
-                <div className="space-y-8">
-                    <div className="space-y-4">
-                        <div className="flex justify-between text-sm font-bold uppercase tracking-widest text-muted-foreground">
+                <div className="space-y-10 mt-6 pt-6 border-t border-white/5 flex-1">
+                    <div className="space-y-6">
+                        <div className="flex justify-between text-base font-bold uppercase tracking-widest text-muted-foreground">
                             <label className="flex items-center gap-2 italic">
-                                <Users className="h-4 w-4" /> Team Size
+                                <Users className="h-5 w-5" /> Team Size
                             </label>
-                            <span className="text-primary">{teamSize} Members</span>
+                            <span className="text-primary text-lg">{teamSize} Members</span>
                         </div>
                         <input
                             type="range"
@@ -38,16 +38,16 @@ const InteractiveCalculator = () => {
                             max="100"
                             value={teamSize}
                             onChange={(e) => setTeamSize(parseInt(e.target.value))}
-                            className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary"
+                            className="w-full h-3 bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary"
                         />
                     </div>
 
-                    <div className="space-y-4">
-                        <div className="flex justify-between text-sm font-bold uppercase tracking-widest text-muted-foreground">
+                    <div className="space-y-6">
+                        <div className="flex justify-between text-base font-bold uppercase tracking-widest text-muted-foreground">
                             <label className="flex items-center gap-2 italic">
-                                <Clock className="h-4 w-4" /> Hrs / Week / Person
+                                <Clock className="h-5 w-5" /> Hrs / Week / Person
                             </label>
-                            <span className="text-primary">{hoursPerWeek} Hours</span>
+                            <span className="text-primary text-lg">{hoursPerWeek} Hours</span>
                         </div>
                         <input
                             type="range"
@@ -55,7 +55,7 @@ const InteractiveCalculator = () => {
                             max="20"
                             value={hoursPerWeek}
                             onChange={(e) => setHoursPerWeek(parseInt(e.target.value))}
-                            className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary"
+                            className="w-full h-3 bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary"
                         />
                     </div>
                 </div>
@@ -67,37 +67,37 @@ const InteractiveCalculator = () => {
                 </div>
             </GlassCard>
 
-            <div className="flex flex-col justify-center space-y-8">
+            <div className="flex flex-col justify-center space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="p-8 rounded-[2rem] bg-white/5 border border-white/10 flex flex-col justify-center">
                         <p className="text-sm font-black uppercase tracking-widest text-muted-foreground mb-2">Annual Reclaimed</p>
                         <div className="flex items-baseline gap-2">
-                            <span className="text-5xl font-black text-primary tabular-nums">
+                            <span className="text-4xl font-black text-primary tabular-nums">
                                 {reclaimedHours.toLocaleString()}
                             </span>
-                            <span className="text-lg font-bold text-muted-foreground">Hrs</span>
+                            <span className="text-base font-bold text-muted-foreground">Hrs</span>
                         </div>
                     </div>
 
                     <div className="p-8 rounded-[2rem] bg-primary/10 border border-primary/20 flex flex-col justify-center">
                         <p className="text-sm font-black uppercase tracking-widest text-primary/70 mb-2">Engineered Leverage</p>
                         <div className="flex items-baseline gap-2">
-                            <span className="text-5xl font-black text-primary tabular-nums">
+                            <span className="text-4xl font-black text-primary tabular-nums">
                                 {equivalentHires}
                             </span>
-                            <span className="text-lg font-bold text-muted-foreground italic">Full-Time Units</span>
+                            <span className="text-base font-bold text-muted-foreground italic">Full-Time Units</span>
                         </div>
                     </div>
                 </div>
 
                 <div className="p-8 rounded-[2.5rem] bg-white/[0.02] border border-white/5 relative overflow-hidden group">
-                    <div className="relative z-10 flex items-start gap-6">
+                    <div className="relative z-10 flex items-start gap-4">
                         <div className="p-4 rounded-2xl bg-primary/20 text-primary">
-                            <Target className="h-8 w-8" />
+                            <Target className="h-6 w-6" />
                         </div>
                         <div>
-                            <h4 className="text-xl font-black uppercase mb-2">Strategic Impact</h4>
-                            <p className="text-muted-foreground font-medium">
+                            <h4 className="text-lg font-black uppercase mb-2">Strategic Impact</h4>
+                            <p className="text-sm text-muted-foreground font-medium leading-relaxed">
                                 This isn't just "saved time." It's capacity to focus on high-variance strategic work that scales revenue without linear headcount growth.
                             </p>
                         </div>

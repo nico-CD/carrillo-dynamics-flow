@@ -16,14 +16,14 @@ import {
 import {
   Form, FormControl, FormField, FormItem, FormLabel, FormMessage,
 } from "@/components/ui/form";
+import {
+  Accordion, AccordionContent, AccordionItem, AccordionTrigger,
+} from "@/components/ui/accordion";
 import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import GlassCard from "@/components/GlassCard";
 import InteractiveCalculator from "@/components/InteractiveCalculator";
 import FastTrackNav from "@/components/FastTrackNav";
-import ComparisonSlider from "@/components/ComparisonSlider";
-import TerminalPreloader from "@/components/TerminalPreloader";
-import ProcessBlueprint from "@/components/ProcessBlueprint";
 import CountUp from "@/components/CountUp";
 import { cn } from "@/lib/utils";
 
@@ -94,11 +94,10 @@ const Index = () => {
 
   return (
     <div className="mesh-gradient min-h-screen text-foreground selection:bg-primary/30 font-sans">
-      <TerminalPreloader />
       <FastTrackNav onContactClick={scrollToForm} onVisibilityChange={setIsNavbarHidden} />
       {!isNavbarHidden && <Navbar />}
 
-      {/* ===== HERO ===== */}
+      {/* 1. HERO SECTION */}
       <section className="relative flex min-h-screen flex-col items-center justify-center px-6 pt-40 text-center overflow-hidden pb-40">
         <div className="max-w-5xl z-10">
           <motion.h1
@@ -165,7 +164,7 @@ const Index = () => {
         <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
       </section>
 
-      {/* ===== SECTOR TRUST ===== */}
+      {/* 2. PARTNERED SECTION (Sector Trust) */}
       <section className="py-24 border-y border-white/5 bg-black/40">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
@@ -191,22 +190,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ===== AUTOMATION CALCULATOR ===== */}
-      <section id="calculator" className="px-6 py-40 border-b border-white/5 bg-black/40">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-20 text-center">
-            <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tight mb-4">
-              Reclaim <span className="text-primary italic">Your Time.</span>
-            </h2>
-            <p className="text-lg sm:text-xl text-muted-foreground font-medium max-w-2xl mx-auto">
-              Personalized ROI projection for your current operational structure.
-            </p>
-          </div>
-          <InteractiveCalculator />
-        </div>
-      </section>
-
-      {/* ===== QUALIFICATION BENTO ===== */}
+      {/* 3. OPERATIONAL CLARITY SECTION (Qualification Bento) */}
       <section id="qualification" className="px-6 py-40 border-t border-white/5 bg-black/20">
         <div className="mx-auto max-w-7xl">
           <div className="mb-24">
@@ -268,63 +252,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ===== COMPARISON SLIDER ===== */}
-      <section id="comparison" className="px-6 py-40 border-t border-white/5 bg-black/40">
-        <div className="mx-auto max-w-7xl">
-          <ComparisonSlider />
-        </div>
-      </section>
-
-      {/* ===== SNAPSHOTS OF SUCCESS ===== */}
-      <section id="success" className="px-6 py-40 bg-black/20">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div className="max-w-2xl">
-              <h2 className="text-5xl font-black tracking-tight sm:text-8xl uppercase mb-6">
-                Snapshots of <span className="text-primary italic">Success.</span>
-              </h2>
-              <p className="text-xl text-muted-foreground font-medium">Real-world impact across diverse operational ecosystems.</p>
-            </div>
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 italic text-sm text-primary font-bold">
-              Engineering Wins.
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                end: 80, suffix: "%", decimals: 0,
-                label: "Time Reduction",
-                win: "Reduced invoice processing delay for a mid-sized logistics carrier via automated OCR pipeline.",
-              },
-              {
-                end: 4.5, suffix: "x", decimals: 1,
-                label: "Capacity Growth",
-                win: "Automated CRM lead routing allowing a sales team to handle 4.5x volume without new hires.",
-              },
-              {
-                end: 0, suffix: "", decimals: 0,
-                label: "Manual Errors",
-                win: "Eliminated reporting discrepancies for a healthcare provider through deterministic data sync.",
-              },
-            ].map((s, idx) => (
-              <GlassCard key={idx} delay={idx * 0.1} className="flex flex-col gap-8 group">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-6xl font-black text-primary tracking-tighter">
-                    <CountUp end={s.end} decimals={s.decimals} suffix={s.suffix} duration={2} />
-                  </span>
-                  <span className="text-xs font-black uppercase tracking-widest text-muted-foreground">{s.label}</span>
-                </div>
-                <p className="text-lg font-medium text-foreground/80 leading-relaxed border-l-2 border-primary/20 pl-6 group-hover:border-primary transition-colors">
-                  "{s.win}"
-                </p>
-              </GlassCard>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== OUR PROCESS ===== */}
+      {/* 4. OUR PROCESS SECTION */}
       <section id="process" className="px-6 py-40 border-t border-white/5">
         <div className="mx-auto max-w-7xl">
           <div className="mb-24">
@@ -396,22 +324,77 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ===== CREDIBILITY ===== */}
-      <section className="px-6 py-40 bg-white/[0.01] border-y border-white/5 shadow-inner">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-2xl leading-relaxed text-foreground/80 font-medium">
-            Carrillo Dynamics is built on a foundation of formal engineering and corporate operations management. This isn't basic software scripting, it's rigorous systems thinking applied to digital infrastructure. Every engagement is engineered with precision, discipline, and accountability.
-          </p>
+      {/* 5. RECLAIM YOUR TIME SECTION (Automation Calculator) */}
+      <section id="calculator" className="px-6 py-40 border-b border-white/5 bg-black/40">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-20 text-center">
+            <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tight mb-4">
+              Reclaim <span className="text-primary italic">Your Time.</span>
+            </h2>
+            <p className="text-lg sm:text-xl text-muted-foreground font-medium max-w-2xl mx-auto">
+              Personalized ROI projection for your current operational structure.
+            </p>
+          </div>
+          <InteractiveCalculator />
         </div>
       </section>
 
-      {/* ===== FOUNDER'S STATEMENT ===== */}
+      {/* 6. SNAPSHOTS OF SUCCESS SECTION */}
+      <section id="success" className="px-6 py-40 bg-black/20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div className="max-w-2xl">
+              <h2 className="text-5xl font-black tracking-tight sm:text-8xl uppercase mb-6">
+                Snapshots of <span className="text-primary italic">Success.</span>
+              </h2>
+              <p className="text-xl text-muted-foreground font-medium">Real-world impact across diverse operational ecosystems.</p>
+            </div>
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 italic text-sm text-primary font-bold">
+              Engineering Wins.
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                end: 80, suffix: "%", decimals: 0,
+                label: "Time Reduction",
+                win: "Reduced invoice processing delay for a mid-sized logistics carrier via automated OCR pipeline.",
+              },
+              {
+                end: 4.5, suffix: "x", decimals: 1,
+                label: "Capacity Growth",
+                win: "Automated CRM lead routing allowing a sales team to handle 4.5x volume without new hires.",
+              },
+              {
+                end: 0, suffix: "", decimals: 0,
+                label: "Manual Errors",
+                win: "Eliminated reporting discrepancies for a healthcare provider through deterministic data sync.",
+              },
+            ].map((s, idx) => (
+              <GlassCard key={idx} delay={idx * 0.1} className="flex flex-col gap-8 group">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-6xl font-black text-primary tracking-tighter">
+                    <CountUp end={s.end} decimals={s.decimals} suffix={s.suffix} duration={2} />
+                  </span>
+                  <span className="text-xs font-black uppercase tracking-widest text-muted-foreground">{s.label}</span>
+                </div>
+                <p className="text-lg font-medium text-foreground/80 leading-relaxed border-l-2 border-primary/20 pl-6 group-hover:border-primary transition-colors">
+                  "{s.win}"
+                </p>
+              </GlassCard>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. STATEMENT OF INTENT SECTION (Founder's Statement) */}
       <section className="px-6 py-40 border-b border-white/5">
         <div className="mx-auto max-w-4xl">
           <GlassCard className="p-12 sm:p-20 relative overflow-hidden border-primary/20 bg-primary/[0.02]">
             <Quote className="absolute top-10 left-10 h-20 w-20 text-primary/5 -z-10" />
             <div className="space-y-8 relative z-10">
-              <h3 className="text-sm font-black uppercase tracking-[0.4em] text-primary italic">Statement of Intent.</h3>
+              <h3 className="text-sm font-black uppercase tracking-[0.4em] text-primary italic">Founder's Statement.</h3>
               <p className="text-xl sm:text-3xl font-bold leading-relaxed text-foreground">
                 "I started Carrillo Dynamics because I saw too many talented teams drowning in 'manual' work, the kind that moves spreadsheets instead of adding zeros.<br /><br />My goal is to turn your operational chaos into a deterministic engine that wins on repeat by design."
               </p>
@@ -426,7 +409,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ===== INTAKE FORM ===== */}
+      {/* 8. CONTACT US SECTION (Intake Form) */}
       <section id="consultation" className="px-6 py-40 bg-black/40">
         <div ref={formRef} className="mx-auto max-w-5xl scroll-mt-24">
           <div className="mb-24 text-center">
@@ -691,44 +674,47 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ===== THE AUTOMATION INDEX ===== */}
+      {/* 9. OPERATIONS FAQ SECTION */}
       <section className="px-6 py-40 border-t border-white/5 bg-white/[0.01]">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-20">
-            <div className="max-w-2xl">
-              <h2 className="text-4xl font-black uppercase tracking-tight mb-4">The Automation <span className="text-primary italic">Index.</span></h2>
-              <p className="text-xl text-muted-foreground font-medium italic">Thought leadership on structural operational integrity.</p>
-            </div>
-            <div className="text-xs font-black uppercase tracking-[0.3em] text-foreground/40 hidden md:block">Volume 01 / 2026</div>
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-20 text-center">
+            <h2 className="text-4xl font-black uppercase tracking-tight mb-4">Operations <span className="text-primary italic">FAQ.</span></h2>
+            <p className="text-xl text-muted-foreground font-medium italic">Addressing common friction points and structural concerns.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Accordion type="single" collapsible className="w-full space-y-4">
             {[
               {
-                title: "Operational Debt: The Hidden Growth Killer",
-                excerpt: "Why manual-first workflows are the primary bottleneck for scaling B2B service firms.",
-                tag: "Strategy",
+                q: "Is this just another SaaS tool we have to manage?",
+                a: "No. This is infrastructure engineering. We build headless, structural systems that sit underneath your current tools and orchestrate them invisibly. You do not log into our software. We turn your existing tools into a unified, deterministic engine."
               },
               {
-                title: "Deterministic vs. Probabilistic Systems",
-                excerpt: "The engineering case for rigid, rule-based automation over black-box AI logic.",
-                tag: "Engineering",
+                q: "How long does it take to see operational leverage?",
+                a: "Because we focus on highly targeted, high-friction bottlenecks first, initial systems are typically architected, deployed, and yielding reclaimed hours within 14-21 days of engagement start."
               },
-            ].map((post, idx) => (
-              <GlassCard key={idx} delay={idx * 0.1} className="p-10 group cursor-pointer hover:bg-white/5">
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-6 block italic">{post.tag}</span>
-                <h4 className="text-2xl font-black uppercase mb-4 tracking-tight group-hover:text-primary transition-colors">{post.title}</h4>
-                <p className="text-muted-foreground font-medium mb-8 leading-relaxed">{post.excerpt}</p>
-                <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0">
-                  Read Analysis <ExternalLink className="h-4 w-4" />
-                </div>
-              </GlassCard>
+              {
+                q: "What if our internal processes are completely undocumented?",
+                a: "That is our starting point. We do not automate chaos; we engineer clarity. Our first step is a rigorous Systems Blueprint phase where we map, optimize, and document the flow before writing a single line of logic."
+              },
+              {
+                q: "Do we need an internal development team to maintain this?",
+                a: "Zero internal maintenance is required. We act as your fractional operations engineering department, providing ongoing structural oversight, uptime management, and iterative scaling."
+              }
+            ].map((faq, idx) => (
+              <AccordionItem key={idx} value={`item-${idx}`} className="border border-white/10 bg-white/5 backdrop-blur-md rounded-2xl px-6 data-[state=open]:bg-white/10 transition-colors">
+                <AccordionTrigger className="text-left text-lg font-bold hover:no-underline py-6 data-[state=open]:text-primary transition-colors">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground font-medium text-base leading-relaxed pb-6">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
         </div>
       </section>
 
-      {/* ===== FOOTER ===== */}
+      {/* 10. FOOTER */}
       <footer className="px-6 py-24 border-t border-white/5 bg-black/50">
         <div className="mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="flex items-center gap-3">
