@@ -60,7 +60,7 @@ const FastTrackNav = ({ onContactClick, onVisibilityChange }: FastTrackNavProps)
                                     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                                     className="flex items-center group justify-self-start"
                                 >
-                                    <div className="hidden sm:flex items-center justify-center transition-transform hover:scale-110">
+                                    <div className="flex items-center justify-center transition-transform hover:scale-110">
                                         <img src="/favicon.ico" alt="Carrillo Dynamics Icon" className="h-6 w-6" />
                                     </div>
                                 </button>

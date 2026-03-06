@@ -4,6 +4,29 @@ This file tracks the evolution of the Carrillo Dynamics website, detailing what 
 
 ---
 
+## [2026-03-05] - Advanced Interactive Features (Iteration 16)
+- **Action**: Implemented Terminal Preloader, Count-Up Mechanics, Spotlight Hover Effects, and Dynamic Process Blueprint.
+- **Why**: Requested by the user to push the website into a highly premium, deterministic "Systems Engineering" tier.
+- **Key Changes**:
+  - `TerminalPreloader.tsx`: Created a fast, ~1.5s simulated code boot sequence that locks scroll on load, flashes green terminal logs, and smoothly reveals the site.
+  - `CountUp.tsx`: Built a new reusable `framer-motion` spring animation wrapper. Replaced the static stats in "Snapshots of Success" (80%, 4.5x, 0) with dynamic numbers that rapidly count up from zero when scrolled into view.
+  - `GlassCard.tsx`: Heavily upgraded to include a magnetic spotlight hover effect (`framer-motion` `useMotionTemplate`). A subtle green radial gradient perfectly tracks the user's cursor within the card bounds.
+  - `ProcessBlueprint.tsx`: Constructed a brand new SVG architecture diagram section ("Engineered Leverage") utilizing `framer-motion`. It visualizes chaotic red inputs (Manual Debt) filtering into a spinning central Engine, emerging as orderly green outputs.
+
+## [2026-03-05] - Form Scroll Refinement (Iteration 15.3)
+- **Action**: Corrected the precision of the form success scrolling behavior.
+- **Why**: The previous scroll attempt targeted the entire form section wrapper, bringing the "Contact Us" header into view and pushing the success message too low.
+- **Key Changes**:
+  - Attached a dedicated `useRef` directly to the glass container (`<div className="glass...">`).
+  - Updated the scroll calculation to `successContainerRef` with a tighter `40px` offset, ensuring the modal remains perfectly framed in the viewport immediately upon submission.
+
+## [2026-03-05] - Mobile Bug Fixes (Iteration 15.2)
+- **Action**: Corrected mobile-specific aesthetic and scroll bugs.
+- **Why**: Re-testing on small viewports revealed hidden elements and jarring viewport shifts.
+- **Key Changes**:
+  - Removed the `hidden sm:flex` breakpoint logic from the Fast-Track Nav favicon, ensuring the logo anchor is permanently visible across all device sizes.
+  - Hard-coded a precise `window.scrollTo({...})` calculation into the form's `onSubmit` handler to statically pin the browser's Y-offset directly to the top edge of the collapsed success modal, fully preventing the mobile viewport from naturally dropping to the Automation Index below.
+
 ## [2026-03-05] - Final Visual Polishes (Iteration 15)
 - **Action**: Removed scrollbars, simplified Fast-Track Nav, and built a custom form success modal interaction.
 - **Why**: Requested by the user to achieve maximum minimalist aesthetic and high-quality post-conversion UX.

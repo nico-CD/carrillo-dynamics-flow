@@ -22,6 +22,9 @@ import GlassCard from "@/components/GlassCard";
 import InteractiveCalculator from "@/components/InteractiveCalculator";
 import FastTrackNav from "@/components/FastTrackNav";
 import ComparisonSlider from "@/components/ComparisonSlider";
+import TerminalPreloader from "@/components/TerminalPreloader";
+import ProcessBlueprint from "@/components/ProcessBlueprint";
+import CountUp from "@/components/CountUp";
 import { cn } from "@/lib/utils";
 
 // --- Form schema --- (Preserved exactly)
@@ -45,6 +48,7 @@ type FormValues = z.infer<typeof formSchema>;
 const Index = () => {
   const { toast } = useToast();
   const formRef = useRef<HTMLDivElement>(null);
+  const successContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -68,8 +72,12 @@ const Index = () => {
     });
     form.reset();
     setTimeout(() => {
-      formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 100);
+      // Pin strictly to the form container to avoid showing the heading
+      const y = successContainerRef.current ? successContainerRef.current.getBoundingClientRect().top + window.scrollY - 40 : 0;
+      if (y > 0) {
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }, 50);
   };
 
   const cyclingWords = ["Sheet Sprawl", "Manual Syncing", "Invoice Chasing", "Email Purgatory", "CRM Bloat", "Lead Leakage"];
@@ -86,6 +94,7 @@ const Index = () => {
 
   return (
     <div className="mesh-gradient min-h-screen text-foreground selection:bg-primary/30 font-sans">
+      <TerminalPreloader />
       <FastTrackNav onContactClick={scrollToForm} onVisibilityChange={setIsNavbarHidden} />
       {!isNavbarHidden && <Navbar />}
 
@@ -284,24 +293,26 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                stat: "80%",
+                end: 80, suffix: "%", decimals: 0,
                 label: "Time Reduction",
                 win: "Reduced invoice processing delay for a mid-sized logistics carrier via automated OCR pipeline.",
               },
               {
-                stat: "4.5x",
+                end: 4.5, suffix: "x", decimals: 1,
                 label: "Capacity Growth",
                 win: "Automated CRM lead routing allowing a sales team to handle 4.5x volume without new hires.",
               },
               {
-                stat: "0",
+                end: 0, suffix: "", decimals: 0,
                 label: "Manual Errors",
                 win: "Eliminated reporting discrepancies for a healthcare provider through deterministic data sync.",
               },
             ].map((s, idx) => (
               <GlassCard key={idx} delay={idx * 0.1} className="flex flex-col gap-8 group">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-6xl font-black text-primary tracking-tighter">{s.stat}</span>
+                  <span className="text-6xl font-black text-primary tracking-tighter">
+                    <CountUp end={s.end} decimals={s.decimals} suffix={s.suffix} duration={2} />
+                  </span>
                   <span className="text-xs font-black uppercase tracking-widest text-muted-foreground">{s.label}</span>
                 </div>
                 <p className="text-lg font-medium text-foreground/80 leading-relaxed border-l-2 border-primary/20 pl-6 group-hover:border-primary transition-colors">
@@ -427,7 +438,7 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="glass p-10 md:p-20 rounded-[4rem] shadow-2xl relative border-white/10 overflow-hidden min-h-[600px] flex flex-col justify-center">
+          <div ref={successContainerRef} className="glass p-10 md:p-20 rounded-[4rem] shadow-2xl relative border-white/10 overflow-hidden min-h-[600px] flex flex-col justify-center">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
 
             <AnimatePresence mode="wait">
