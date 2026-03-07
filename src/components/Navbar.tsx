@@ -17,9 +17,12 @@ const Navbar = () => {
             className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5 glass transition-all duration-300"
         >
             <div className="flex items-center gap-3">
-                <div className="relative">
-                    <div className="h-2 w-2 rounded-full bg-primary" />
-                    <div className="absolute inset-0 h-2 w-2 rounded-full bg-primary animate-ping opacity-75" />
+                <div className="relative h-10 w-10 overflow-hidden rounded-full border border-white/10 shadow-lg">
+                    <img
+                        src="/bull_PNGs/bull-apple-touch-icon.png"
+                        alt="Carrillo Dynamics Logo"
+                        className="h-full w-full object-cover"
+                    />
                 </div>
                 <span className="text-sm font-black uppercase tracking-[0.2em]">Carrillo Dynamics</span>
             </div>

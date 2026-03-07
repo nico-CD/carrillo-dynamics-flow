@@ -61,7 +61,7 @@ const FastTrackNav = ({ onContactClick, onVisibilityChange }: FastTrackNavProps)
                                     className="flex items-center group justify-self-start"
                                 >
                                     <div className="flex items-center justify-center transition-transform hover:scale-110">
-                                        <img src="/favicon.ico" alt="Carrillo Dynamics Icon" className="h-6 w-6" />
+                                        <img src="/bull_PNGs/bull-favicon-32x32.png" alt="Carrillo Dynamics Icon" className="h-7 w-7 rounded-full object-cover border border-white/20 shadow-md" />
                                     </div>
                                 </button>
 

@@ -4,6 +4,27 @@ This file tracks the evolution of the Carrillo Dynamics website, detailing what 
 
 ---
 
+## [2026-03-07] - Branding & Security Refinement (Iteration 20)
+- **Action**: Full rebrand of project documentation and metadata, plus security hardening guide.
+- **Why**: To remove leftover boilerplate and ensure the site displays professional CD Bull branding on all mobile devices and social shares.
+- **Key Changes**:
+  - `README.md`: Completely rewritten to focus on Carrillo Dynamics systems engineering.
+  - `index.html`: Added Apple Touch Icon and high-res OpenGraph/Twitter social sharing images.
+  - `Navbar.tsx` & `FastTrackNav.tsx`: Integrated official logos (finalized paths to `/bull_PNGs/` folder).
+  - `SECURITY.md`: Authored a comprehensive guide on `.env` file security (restored).
+  - `.gitignore`: Hardened security by explicitly excluding `.env` and `.env.*` files.
+  - **Asset Prep**: Verified high-res bull logo assets in `/public/bull_PNGs/`.
+
+## [2026-03-07] - Consultation Form & n8n Integration (Iteration 19)
+- **Action**: Connected the consultation form to an external n8n webhook via an async POST request.
+- **Why**: To automate intake and routing of consultation requests to the founder's backend.
+- **Key Changes**:
+  - `Index.tsx`: Refactored `onSubmit` to be an `async` function using `fetch`.
+  - **Loading Feedback**: Added `isLoading` state and a `Loader2` spinner to the submit button to provide visual feedback during network requests.
+  - **Environment Security**: Implemented environment variable support via `import.meta.env.VITE_N8N_WEBHOOK_URL` to avoid hardcoding URLs.
+  - **Error Handling**: Added defensive checks for missing webhook URLs and graceful error toasts for network failures.
+  - **.env**: Created a `.env` template file for local development.
+
 ## [2026-03-06] - Navigational & UI Fine-Tuning (Iteration 18.2)
 - **Action**: Simplified the fast-track bar, adjusted calculator spacing, and updated section headers.
 - **Why**: To streamline the user experience by focusing on primary CTAs and improving visual balance.

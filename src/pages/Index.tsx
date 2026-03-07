@@ -5,7 +5,7 @@ import * as z from "zod";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search, Layers, Rocket, Check, X, Shield, Cog, ArrowDown, Activity, ExternalLink,
-  ChevronRight, Gem, Truck, HeartPulse, Boxes, BarChart3, Quote
+  ChevronRight, Gem, Truck, HeartPulse, Boxes, BarChart3, Quote, Loader2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -63,21 +63,58 @@ const Index = () => {
     },
   });
 
-  const onSubmit = (data: FormValues) => {
-    console.log("Form submitted:", data);
-    setIsSubmitted(true);
-    toast({
-      title: "Submission Received",
-      description: "We'll be in touch within 24 hours to schedule your Systems Consultation.",
-    });
-    form.reset();
-    setTimeout(() => {
-      // Pin strictly to the form container to avoid showing the heading
-      const y = successContainerRef.current ? successContainerRef.current.getBoundingClientRect().top + window.scrollY - 40 : 0;
-      if (y > 0) {
-        window.scrollTo({ top: y, behavior: "smooth" });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = async (data: FormValues) => {
+    setIsLoading(true);
+    try {
+      const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
+
+      if (!webhookUrl) {
+        console.error("VITE_N8N_WEBHOOK_URL is not defined");
+        toast({
+          variant: "destructive",
+          title: "Configuration Error",
+          description: "Webhook URL is missing. Please contact support.",
+        });
+        setIsLoading(false);
+        return;
       }
-    }, 50);
+
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        toast({
+          title: "Submission Received",
+          description: "We'll be in touch within 24 hours to schedule your Systems Consultation.",
+        });
+        form.reset();
+        setTimeout(() => {
+          const y = successContainerRef.current ? successContainerRef.current.getBoundingClientRect().top + window.scrollY - 40 : 0;
+          if (y > 0) {
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
+        }, 50);
+      } else {
+        throw new Error("Failed to submit");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: "There was a problem sending your application. Please try again or email us directly.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const cyclingWords = ["Sheet Sprawl", "Manual Syncing", "Invoice Chasing", "Email Purgatory", "CRM Bloat", "Lead Leakage"];
@@ -633,9 +670,17 @@ const Index = () => {
                       <Button
                         type="submit"
                         size="lg"
-                        className="w-full h-20 sm:h-24 rounded-[1.5rem] bg-primary text-lg sm:text-2xl font-black uppercase tracking-[0.1em] sm:tracking-[0.3em] transition-all hover:shadow-[0_0_60px_rgba(16,185,129,0.5)] shadow-xl active:scale-95 px-4"
+                        disabled={isLoading}
+                        className="w-full h-20 sm:h-24 rounded-[1.5rem] bg-primary text-lg sm:text-2xl font-black uppercase tracking-[0.1em] sm:tracking-[0.3em] transition-all hover:shadow-[0_0_60px_rgba(16,185,129,0.5)] shadow-xl active:scale-95 px-4 disabled:opacity-70 disabled:cursor-not-allowed"
                       >
-                        Confirm Application
+                        {isLoading ? (
+                          <div className="flex items-center gap-3">
+                            <Loader2 className="h-6 w-6 sm:h-8 sm:w-8 animate-spin" />
+                            <span>Processing...</span>
+                          </div>
+                        ) : (
+                          "Confirm Application"
+                        )}
                       </Button>
                     </form>
                   </Form>
