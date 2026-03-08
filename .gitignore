@@ -28,4 +28,6 @@ dist-ssr
 
 # Secrets
 .env
+.env.*
 .env.production
+!.env.example

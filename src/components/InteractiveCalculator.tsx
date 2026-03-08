@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calculator, Users, Clock, Zap, Target } from "lucide-react";
 import GlassCard from "./GlassCard";
+import { calculateAnnualReclaimedHours, calculateEngineeredLeverage } from "@/utils/roi";
 
 const InteractiveCalculator = () => {
     const [teamSize, setTeamSize] = useState(10);
@@ -9,12 +10,10 @@ const InteractiveCalculator = () => {
     const [reclaimedHours, setReclaimedHours] = useState(0);
 
     useEffect(() => {
-        // Annual reclaimed hours = team size * hours/week * 50 weeks
-        const total = teamSize * hoursPerWeek * 50;
-        setReclaimedHours(total);
+        setReclaimedHours(calculateAnnualReclaimedHours(teamSize, hoursPerWeek));
     }, [teamSize, hoursPerWeek]);
 
-    const equivalentHires = (reclaimedHours / 2000).toFixed(1);
+    const equivalentHires = calculateEngineeredLeverage(reclaimedHours);
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

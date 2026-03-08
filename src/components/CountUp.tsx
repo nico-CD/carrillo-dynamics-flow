@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
 
 interface CountUpProps {
+    start?: number;
     end: number;
     duration?: number;
     decimals?: number;
@@ -9,17 +10,17 @@ interface CountUpProps {
     prefix?: string;
 }
 
-export default function CountUp({ end, duration = 2, decimals = 0, suffix = "", prefix = "" }: CountUpProps) {
+export default function CountUp({ start = 0, end, duration = 2, decimals = 0, suffix = "", prefix = "" }: CountUpProps) {
     const ref = useRef<HTMLSpanElement>(null);
     const isInView = useInView(ref, { once: true, margin: "-50px" });
 
-    const springValue = useSpring(0, {
+    const springValue = useSpring(start, {
         bounce: 0,
         duration: duration * 1000,
     });
 
     const displayValue = useTransform(springValue, (current) => {
-        return prefix + current.toFixed(decimals) + suffix;
+        return prefix + +current.toFixed(decimals) + suffix;
     });
 
     useEffect(() => {
