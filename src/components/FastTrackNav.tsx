@@ -32,9 +32,13 @@ const FastTrackNav = ({ onContactClick, onVisibilityChange }: FastTrackNavProps)
 
 
 
-    const scrollToSection = (id: string) => {
-        const el = document.getElementById(id);
-        el?.scrollIntoView({ behavior: "smooth" });
+    const handleNavigation = (id: string) => {
+        if (window.location.pathname !== "/") {
+            window.location.href = `/#${id}`;
+        } else {
+            const el = document.getElementById(id);
+            el?.scrollIntoView({ behavior: "smooth" });
+        }
     };
 
     return (
@@ -57,7 +61,7 @@ const FastTrackNav = ({ onContactClick, onVisibilityChange }: FastTrackNavProps)
 
                             <div className="grid grid-cols-2 lg:grid-cols-3 w-full items-center gap-4">
                                 <button
-                                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                                    onClick={() => window.location.href = "/"}
                                     className="flex items-center group justify-self-start"
                                 >
                                     <div className="flex items-center justify-center transition-transform hover:scale-110">
@@ -67,7 +71,7 @@ const FastTrackNav = ({ onContactClick, onVisibilityChange }: FastTrackNavProps)
 
                                 <div className="hidden lg:flex justify-center">
                                     <button
-                                        onClick={() => scrollToSection('calculator')}
+                                        onClick={() => handleNavigation('calculator')}
                                         className="text-[10px] font-black uppercase tracking-[0.2em] text-white hover:text-primary transition-colors whitespace-nowrap"
                                     >
                                         Reclaim Your Time
@@ -80,7 +84,7 @@ const FastTrackNav = ({ onContactClick, onVisibilityChange }: FastTrackNavProps)
                                         size="sm"
                                         className="h-10 rounded-full px-6 text-[10px] font-black uppercase tracking-widest bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg transition-all"
                                     >
-                                        Contact Us
+                                        Initiate Blueprint
                                     </Button>
                                 </div>
                             </div>

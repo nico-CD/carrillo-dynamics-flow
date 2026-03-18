@@ -97,7 +97,7 @@ const InteractiveCalculator = () => {
                         <div>
                             <h4 className="text-lg font-black uppercase mb-2">Strategic Impact</h4>
                             <p className="text-sm text-muted-foreground font-medium leading-relaxed">
-                                This isn't just "saved time." It's capacity to focus on high-variance strategic work that scales revenue without linear headcount growth.
+                                This isn't just about "reclaiming time." This is about reclaiming your focus on high-value work that scales revenue without increasing headcount.
                             </p>
                         </div>
                     </div>

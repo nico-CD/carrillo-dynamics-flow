@@ -22,7 +22,7 @@
     --secondary-foreground: 0 0% 98%;
 
     --muted: 220 15% 20%;
-    --muted-foreground: 220 5% 60%;
+    --muted-foreground: 220 10% 75%;
 
     --accent: 220 15% 25%;
     --accent-foreground: 0 0% 98%;
@@ -46,15 +46,21 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, sans-serif;
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
   }
 
-  body::-webkit-scrollbar {
-    display: none;
-    /* Chrome, Safari and Opera */
+  /* Custom Slim Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full border border-transparent bg-clip-padding;
+    border-width: 1px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/40;
   }
 
   h1,

@@ -42,19 +42,19 @@ const Process = () => {
                             icon: Search,
                             step: "01",
                             title: "Systems Analysis",
-                            desc: "Rigorous mapping of existing operational debt and performance bottlenecks.",
+                            desc: "Rigorous mapping of scheduling chaos, dispatch bottlenecks, and field tracking inefficiencies.",
                         },
                         {
                             icon: Layers,
                             step: "02",
                             title: "Architecture Design",
-                            desc: "Custom-engineered infrastructure layers designed for long-term scalability.",
+                            desc: "Custom-engineered routing and management layers designed to streamline crew operations.",
                         },
                         {
                             icon: Rocket,
                             step: "03",
                             title: "Deterministic Scale",
-                            desc: "Deployment of high-ROI systems that automate complex business logic.",
+                            desc: "Deployment of high-ROI systems that automate dispatch, quotes, and manual field operations.",
                         },
                     ].map((p, idx) => (
                         <GlassCard key={idx} delay={idx * 0.1} className="flex flex-col justify-between group cursor-default hover:bg-white/[0.08] relative overflow-hidden border-white/5 min-h-[360px]">

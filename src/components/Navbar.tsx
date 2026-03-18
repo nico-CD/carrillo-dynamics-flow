@@ -3,10 +3,14 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 
 const Navbar = () => {
-    const scrollToSection = (id: string) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
+    const handleNavigation = (id: string) => {
+        if (window.location.pathname !== "/") {
+            window.location.href = `/#${id}`;
+        } else {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
         }
     };
 
@@ -28,16 +32,16 @@ const Navbar = () => {
             </div>
 
             <div className="hidden items-center gap-10 md:flex">
-                <button onClick={() => scrollToSection('process')} className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground transition-colors hover:text-primary">Our Process</button>
-                <button onClick={() => scrollToSection('success')} className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground transition-colors hover:text-primary">Your Success</button>
+                <button onClick={() => handleNavigation('process')} className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground transition-colors hover:text-primary">Our Process</button>
+                <button onClick={() => handleNavigation('success')} className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground transition-colors hover:text-primary">Your Success</button>
             </div>
 
             <Button
-                onClick={() => scrollToSection('consultation')}
+                onClick={() => handleNavigation('consultation')}
                 size="sm"
                 className="h-10 rounded-full px-8 text-[11px] font-black uppercase tracking-[0.2em] bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all"
             >
-                Contact Us
+                Initiate Blueprint
             </Button>
         </motion.nav>
     );

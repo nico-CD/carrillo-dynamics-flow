@@ -76,7 +76,7 @@ const Hero = ({ onContactClick }: HeroProps) => {
                         size="lg"
                         className="h-16 sm:h-20 rounded-full bg-primary px-8 sm:px-12 text-base sm:text-lg font-black uppercase tracking-widest transition-all hover:scale-105 hover:shadow-[0_0_50px_rgba(16,185,129,0.4)] shadow-xl"
                     >
-                        Request Consultation
+                        Initiate Blueprint
                         <ChevronRight className="ml-2 h-5 w-5 sm:h-6 sm:w-6" />
                     </Button>
                 </motion.div>

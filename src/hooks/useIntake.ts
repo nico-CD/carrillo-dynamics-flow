@@ -5,9 +5,8 @@ import { IntakeValues } from "@/types/intake";
 export const useIntake = () => {
     const { toast } = useToast();
     const [isLoading, setIsLoading] = useState(false);
-    const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const submitIntake = async (data: IntakeValues) => {
+    const submitIntake = async (data: IntakeValues, step: 1 | 2 = 1) => {
         setIsLoading(true);
         try {
             const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
@@ -30,17 +29,13 @@ export const useIntake = () => {
                 },
                 body: JSON.stringify({
                     ...data,
+                    formStep: step,
                     submittedAt: new Date().toISOString(),
                     source: window.location.hostname,
                 }),
             });
 
             if (response.ok) {
-                setIsSubmitted(true);
-                toast({
-                    title: "Submission Received",
-                    description: "We'll be in touch within 24 hours to schedule your Systems Consultation.",
-                });
                 return true;
             } else {
                 throw new Error("Failed to submit");
@@ -58,12 +53,8 @@ export const useIntake = () => {
         }
     };
 
-    const resetSubmission = () => setIsSubmitted(false);
-
     return {
         isLoading,
-        isSubmitted,
         submitIntake,
-        resetSubmission,
     };
 };

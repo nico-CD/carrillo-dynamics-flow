@@ -27,7 +27,7 @@ const SuccessSnapshots = () => {
                         {
                             end: 4.5, suffix: "x", decimals: 1,
                             label: "Capacity Growth",
-                            win: "Automated CRM lead routing allowing a sales team to handle 4.5x volume without new hires.",
+                            win: "Automated CRM lead routing allowing a contractor to handle 4.5x volume without new hires.",
                         },
                         {
                             start: 100, end: 0, suffix: "", decimals: 0,
